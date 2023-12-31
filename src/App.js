@@ -1,27 +1,34 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
+import Toast from "react-bootstrap/Toast";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Contact from "./Contact";
 import NotFound from "./NotFound";
+import Testimonials from "./Testimonials";
+import { useState } from "react";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Navbar />
-        <div className="content"></div>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
+
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/testimonials">
+              <Testimonials />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </div>
         <div className="foot">
           <footer>
             <address>

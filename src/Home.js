@@ -1,4 +1,13 @@
+import useFetch from "./useFetch";
+import Tutors from "./Tutors";
+
 const Home = () => {
+  const {
+    data: tutors,
+    isPending,
+    error,
+  } = useFetch("http://localhost:8000/tutors");
+
   return (
     <div className="home">
       <h2>Welcome to Apex Academy Prep</h2>
@@ -19,6 +28,9 @@ const Home = () => {
         2 Math Level 1, SAT 2 Math Level 2 Geometry, Algebra 2,
         Trig/Precalculus, Math Analysis AP Euro
       </p>
+      {error && <div>{error}</div>}
+      {isPending && <div>loading...</div>}
+      {tutors && <Tutors tutors={tutors} title="Meet the Tutors!" />}
     </div>
   );
 };
